@@ -1,0 +1,153 @@
+body {
+    background-color: #0a0a0a;
+    color: #e5e7eb;
+}
+
+.ordera:hover {
+    color: #0a431f;
+}
+
+.orderh1:hover {
+    color: #0a431f;
+}
+
+.orderp:hover {
+    color: #0a431f;
+}
+
+.glow {
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
+}
+
+.green-glow:hover {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+    border-color: #22c55e;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 10px;
+}
+
+.active-nav {
+    border-bottom: 2px solid #22c55e;
+    color: #22c55e;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb-yellow {
+    background: #eab308;
+    border-radius: 10px;
+}
+
+.yellow-glow {
+    box-shadow: 0 0 25px rgba(234, 179, 8, 0.1);
+}
+
+
+
+/* Platform Card Style */
+.platform-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.platform-card:hover {
+    border-color: rgba(34, 197, 94, 0.5);
+    /* Border Hijau saat Hover */
+    background: rgba(34, 197, 94, 0.05);
+    /* BG Hijau Tipis saat Hover */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(34, 197, 94, 0.1);
+}
+
+.fancy-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+/* Lift + scale halus */
+.fancy-card:hover {
+    transform: translateY(-2px) scale(1.01);
+}
+
+.fancy-card::before,
+.fancy-card::after {
+    pointer-events: none;
+}
+
+.fancy-card::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.15), transparent 60%);
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fancy-card:hover::after {
+    opacity: 1;
+}
+
+.fancy-card:hover h3 {
+    color: #facc15;
+    transition: 0.4s;
+}
+
+.fancy-card:hover p {
+    color: #e5e7eb;
+    transition: 0.4s;
+}
+
+.fancy-card:hover .text-gray-400 {
+    color: #d1d5db;
+}
+
+
+.fancy-card:hover {
+    backdrop-filter: blur(6px);
+}
+
+@keyframes scrollHorizontal {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll {
+    animation: scrollHorizontal 55s linear infinite;
+    display: grid;
+    /* Penting: align-items-stretch memastikan semua kartu dalam satu row punya tinggi yang sama */
+    align-items: stretch;
+}
+
+/* Hilangkan pembatasan teks */
+#scroll-wrapper p {
+    display: block;
+    /* Mengganti flex/line-clamp */
+    overflow: visible;
+    height: auto;
+    color: #6b7280;
+    /* text-gray-500 */
+    font-size: 0.875rem;
+    /* text-sm */
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
