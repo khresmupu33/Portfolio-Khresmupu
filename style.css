@@ -72,40 +72,12 @@ body {
 .fancy-card {
     position: relative;
     overflow: hidden;
-    transition: all 0.5s ease;
+    /* Tambahkan margin horizontal agar antar card ada jarak kanan-kiri */
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
-/* Lift + scale halus */
-.fancy-card:hover {
-    transform: translateY(-2px) scale(1.01);
-}
 
-.fancy-card::before,
-.fancy-card::after {
-    pointer-events: none;
-}
-
-.fancy-card::after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(circle, rgba(250, 204, 21, 0.15), transparent 60%);
-    opacity: 0;
-    z-index: 0;
-    transition: opacity 0.5s ease;
-}
-
-.fancy-card:hover::after {
-    opacity: 1;
-}
-
-.fancy-card:hover h3 {
-    color: #facc15;
-    transition: 0.4s;
-}
 
 .fancy-card:hover p {
     color: #e5e7eb;
@@ -116,9 +88,12 @@ body {
     color: #d1d5db;
 }
 
-
-.fancy-card:hover {
-    backdrop-filter: blur(6px);
+@media (max-width: 768px) {
+    .fancy-card {
+        min-height: 300px !important;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
 }
 
 @keyframes scrollHorizontal {

@@ -73,3 +73,57 @@ const scrollWrapper = document.getElementById('scroll-wrapper');
 if (scrollWrapper) {
     scrollWrapper.innerHTML += scrollWrapper.innerHTML;
 }
+const slider = document.getElementById('project-slider');
+const originalSlides = Array.from(slider.children);
+const totalOriginal = originalSlides.length;
+let currentIndex = 0;
+let isTransitioning = true;
+
+// Duplikasi semua slide dan tempel di akhir (Biar loop mulus tanpa jeda)
+originalSlides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    slider.appendChild(clone);
+});
+
+const allSlides = slider.children;
+const totalSlides = allSlides.length;
+
+function updateSlider(withTransition = true) {
+    if (withTransition) {
+        slider.style.transition = 'transform 0.7s ease-in-out';
+    } else {
+        slider.style.transition = 'none';
+    }
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextSlide() {
+    currentIndex++;
+    updateSlider(true);
+
+    // Kalau sudah sampai di ujung duplikat, teleport instan balik ke awal tanpa animasi
+    if (currentIndex >= totalOriginal) {
+        setTimeout(() => {
+            currentIndex = 0;
+            updateSlider(false);
+        }, 700); // Harus sama dengan durasi transition (0.7s)
+    }
+}
+
+function prevSlideFunc() {
+    if (currentIndex <= 0) {
+        currentIndex = totalOriginal;
+        updateSlider(false);
+        setTimeout(() => {
+            currentIndex--;
+            updateSlider(true);
+        }, 20);
+    } else {
+        currentIndex--;
+        updateSlider(true);
+    }
+}
+
+// Tombol Manual
+document.getElementById('next-btn').addEventListener('click', nextSlide);
+document.getElementById('prev-btn').addEventListener('click', prevSlideFunc);
